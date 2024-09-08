@@ -23,13 +23,12 @@ public class SecurityConfig {
 	private final JwtAuthenticationFilter jwtAuthenticationFilter;
 	private final AuthenticationProvider authProvider;
 
-	public void addCorsMappings(CorsRegistry registry) {
-		registry.addMapping("/**")
-		.allowedOrigins("*");
-//		.allowedOrigins("http://localhost:3000")
-//		.allowedOrigins("http://172.41.5.26:3000");
-//		.allowedMethods("GET", "POST", "PUT", "DELETE");
-	}
+	 public void addCorsMappings(CorsRegistry registry) {
+         registry.addMapping("/**")
+                 .allowedOrigins("*")
+                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                 .allowedHeaders("*");
+     }
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
